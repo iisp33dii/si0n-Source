@@ -101,22 +101,6 @@ Public Class cMemoryManager
         WrtMem(pOffset, BitConverter.GetBytes(CShort(pBytes)))
     End Sub
 
-
-    '   	template<typename T>
-    'bool WriteProtected(DWORD_PTR dwAddress, Const T& tValue )
-    '{
-    '	DWORD_PTR oldProtect;
-    '	VirtualProtectEx( m_hProcess, ( LPVOID )dwAddress, sizeof( T ), PAGE_EXECUTE_READWRITE, &oldProtect );
-    '	Write( dwAddress, &tValue, sizeof( T ) );
-    '	VirtualProtectEx( m_hProcess, ( LPVOID )dwAddress, sizeof( T ), oldProtect, NULL );
-    '	Return True;
-    '}
-    'Public Sub WrtProtectedByte(pOffset As Integer, pBytes As Byte)
-    '    Dim oldProtect As Integer
-    '    Virtualprote
-    '    WrtMem(pOffset, BitConverter.GetBytes(CShort(pBytes)))
-    'End Sub
-
     Public Function ReadMemory(Of T)(address As Integer) As T
         Dim buffer As Byte()
         Dim length As Integer = Marshal.SizeOf(GetType(T))
@@ -161,6 +145,4 @@ Public Class cMemoryManager
 
         WrtMem(address, ByteArray)
     End Sub
-
-
 End Class

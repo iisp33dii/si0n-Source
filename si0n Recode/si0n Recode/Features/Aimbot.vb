@@ -6,24 +6,6 @@ Public Class cAimbot
     Private Target As New cBasePlayer(Nothing)
     Private bOnce As Boolean = True
 
-    Public Structure UserCmd_t
-        Dim command_number As Integer
-        Dim tick_count As Integer
-        Dim viewangles As Vec3
-        Dim aimdirection As Vec3
-        Dim forwardmove As Single
-        Dim sidemove As Single
-        Dim upmove As Single
-        Dim buttons As Integer
-        Dim impulse As Byte
-        Dim weaponselect As Integer
-        Dim weaponsubtype As Integer
-        Dim random_seed As Integer
-        Dim mousedx As Short
-        Dim mousedy As Short
-        Dim hasbeenpredicted As Boolean
-    End Structure
-
     Public Sub Aimbot(Aimspot As Integer, Fov As Single, Smooth As Integer, FovPistols As Single, SmoothPistol As Integer, FovSnipers As Single, SmoothSnipers As Integer)
         If GetAsyncKeyState(1) Then
             If pLocalPlayer.ActiveWeapon.Clip > 0 Then
@@ -62,8 +44,6 @@ Public Class cAimbot
                 If bOnce Then
                     _FOV /= 10
 
-                    '  wl(GetNextEnemyToCrosshair(6, 0) & " " & GetNextEnemyToCrosshairRangebased(6, 0) / 10)
-
                     If GetTargetFov(Aimspot, Settings.RangeBased) <= _FOV Then
                         If Not Target.ptr = Nothing Then bOnce = False
                     Else
@@ -76,14 +56,14 @@ Public Class cAimbot
                     Dim Ang As New Vec3(0, 0, 0)
 
                     If _StopAfter1Shot And pLocalPlayer.ShotsFired < 1 Then
-                        Dim Aimspot2 As Integer = 6
-                        If pLocalPlayer.ActiveWeapon.ID = ENUMS.ItemDefinitionIndex.AWP Then Aimspot2 = 4
-                        Ang = SmoothAng(ClampAngle(CalcAngle(pLocalPlayer.OriginVec, Target.BonePosition(6), pLocalPlayer.PunchAngle, pLocalPlayer.ViewOffset, 2, 2)), _Smooth)
+                        Dim Aimspot2 As Integer = 8
+                        If pLocalPlayer.ActiveWeapon.ID = ENUMS.ItemDefinitionIndex.AWP Then Aimspot2 = 9
+                        Ang = SmoothAng(ClampAngle(CalcAngle(pLocalPlayer.OriginVec, Target.BonePosition(Aimspot2), pLocalPlayer.PunchAngle, pLocalPlayer.ViewOffset, 2, 2)), _Smooth)
                     ElseIf Not _StopAfter1Shot And Target.SpottedByMask Then
                         Ang = SmoothAng(ClampAngle(CalcAngle(pLocalPlayer.OriginVec, Target.BonePosition(Aimspot), pLocalPlayer.PunchAngle, pLocalPlayer.ViewOffset, 2, 2)), _Smooth)
                     End If
 
-                    If Ang.x + Ang.y + Ang.z <> 0 Then Engine.SetAngles(ClampAngle(Ang)) ' SetAnglesSilent(Ang) 
+                    If Ang.x + Ang.y + Ang.z <> 0 Then Engine.SetAngles(ClampAngle(Ang))
 
                 End If
 
@@ -97,42 +77,6 @@ Public Class cAimbot
             bOnce = True
         End If
     End Sub
-
-        'dis doesnt work
-    'Private Sub SetAnglesSilent(Angle As Vec3)
-
-      '  Dim userCMDSequenceNum As Integer = 0
-     '   Dim oldAngles As Vec3
-     '   Dim userCMD As Integer
-
-       ' Dim curSequenceNum As Integer = mem.rdInt(Engine.Clientstate + &H4C7C) + 1
-      '  userCMD += (curSequenceNum Mod 150) * &H64
-
-       ' While userCMDSequenceNum <> curSequenceNum
-        '    oldAngles = Engine.ViewAngles
-       '     userCMDSequenceNum = mem.rdInt(userCMD + &H4)
-      '      wl(curSequenceNum & " " & userCMDSequenceNum)
-      '  End While
-
-      '  Angle = ClampAngle(Angle)
-
-      '  wl(mem.ReadMemory(Of Vec3)(userCMD + &HC).tostring)
-
-     '   For i = 0 To 20
-            mem.WriteStruct(Of Vec3)(userCMD + &HC, Angle)
-     '   Next
-      '  Engine.SetAngles(oldAngles)
-      '  sleep(6)
-
-  '  End Sub
-
-    'Private Function SetSendPacket(mode As Boolean)
-    '    If mode Then
-    '        mem.WrtByte(dwsendpacket, 1)
-    '    Else
-    '        mem.WrtByte(dwsendpacket, 0)
-    '    End If
-    'End Function
 
     Private Function IsValid(trgt As cBasePlayer)
         If trgt.Health > 0 And Not trgt.Dormant Then Return True Else Return False
@@ -272,12 +216,11 @@ Public Class cAimbot
     End Function
 
     Private Function ClampAngle(ViewAngle As Vec3)
-        If ViewAngle.x > 89.0F And ViewAngle.x <= 180.0F Then ViewAngle.x = 89.0F
-        If ViewAngle.x > 180.0F Then ViewAngle.x -= 360
-        If ViewAngle.x < -89.0F Then ViewAngle.x = -89.0F
-        If ViewAngle.y > 180.0F Then ViewAngle.y -= 360
-        If ViewAngle.y < -180.0F Then ViewAngle.y += 360
-        If ViewAngle.z <> 0 Then ViewAngle.z = 0
+        If ViewAngle.x < -89.0F Then ViewAngle.x = 89.0F
+        If ViewAngle.x > 89.0F Then ViewAngle.x = 89.0F
+        If ViewAngle.y < -180.0F Then ViewAngle.y += 360.0F
+        If ViewAngle.y > 180.0F Then ViewAngle.y -= 360.0F
+        If ViewAngle.z <> 0.0F Then ViewAngle.z = 0.0F
         Return ViewAngle
     End Function
 

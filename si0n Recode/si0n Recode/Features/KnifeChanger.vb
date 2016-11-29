@@ -4,6 +4,8 @@ Imports si0n.cUsefulFuncs
 Imports si0n.ENUMS
 Public Class cKnifeChanger
 
+    ''Credits for this go to Klorik on UC
+
     Private Structure tSkinModel
         Public off1 As Integer
         Public off2 As Integer
@@ -15,12 +17,6 @@ Public Class cKnifeChanger
     Private KnifeID As Integer
 
     Public Sub KnifeChanger(KnifeModel As Integer)
-
-        '''<<< Debugging >>>'''
-        'wl("Clip: " & pLocalPlayer.ActiveWeapon.Clip)
-        'wl("ID: " & pLocalPlayer.ActiveWeapon.ID)
-
-        '  If pLocalPlayer.Health <= 0 Then NeedIndexes = True
 
         Dim WeaponBase As Integer = pLocalPlayer.ActiveWeapon.ptr
         Dim WeaponDefID As Integer = pLocalPlayer.ActiveWeapon.ID
@@ -48,7 +44,7 @@ Public Class cKnifeChanger
                     NeedIndexes = False
             End Select
 
-        ElseIf pLocalPlayer.ActiveWeapon.clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And Not NeedIndexes And WeaponBase >= 1000 Then ' And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife
+        ElseIf pLocalPlayer.ActiveWeapon.Clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And Not NeedIndexes And WeaponBase >= 1000 Then
             Dim hWeapon As Integer = mem.rdInt(pLocalPlayer.ptr + m_hViewModel)
             Dim KnifeBase As Integer = mem.rdInt(mem.ClientDLL + dwEntityList + ((hWeapon And &HFFF) - 1) * &H10)
 
@@ -123,31 +119,3 @@ Public Class cKnifeChanger
     End Function
 
 End Class
-
-'ElseIf pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And NeedIndexes = False And WeaponBase >= 1000 Then
-'    Dim hWeapon As Integer = mem.rdInt(pLocalPlayer.ptr + m_hViewModel)
-'    Dim KnifeBase As Integer = mem.rdInt(mem.ClientDLL + m_dwEntityList + ((hWeapon And &HFFF) - 1) * &H10)
-
-
-'    If KnifeBase >= 1000 Then
-'        setKnifeData(KnifeID)
-
-'        If pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And mem.rdInt(KnifeBase + m_nModelIndex) <> KnifeID Then
-'            mem.WrtInt(KnifeBase + m_nModelIndex, KnifeID)
-'        End If
-
-'        Dim tmpSkinModel As tSkinModel
-'        tmpSkinModel.off1 = mem.rdInt(WeaponBase + m_iWorldModelIndex)
-'        tmpSkinModel.off2 = mem.rdInt(WeaponBase + m_iWorldModelIndex + &H4)
-
-'        If pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And tmpSkinModel.off1 <> KnifeID + 1 Or tmpSkinModel.off2 <> KnifeID Then
-'            mem.WrtInt(WeaponBase + m_iWorldModelIndex, SkinModel.off1)
-'            mem.WrtInt(WeaponBase + m_iWorldModelIndex + &H4, SkinModel.off2)
-'        End If
-
-'        If pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And mem.rdInt(WeaponBase + m_iItemDefinitionIndex) <> GetKnifeID(KnifeID) Then
-'            mem.WrtInt(WeaponBase + m_iItemDefinitionIndex, GetKnifeID(KnifeID))
-'        End If
-'    End If
-'End If
-

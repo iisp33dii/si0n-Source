@@ -76,6 +76,4 @@ Public Class cConfig
         Dim c As RGBA = RGBAColor
         Return "red: " & c.r & ", green: " & c.g & ", blue: " & c.b & ", alpha: " & c.a
     End Function
-
-
 End Class

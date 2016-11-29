@@ -2,7 +2,9 @@
 Imports si0n.Offsets
 Imports si0n.ENUMS
 Imports si0n.cUsefulFuncs
+
 Public Class cSkinchanger
+
     Public sDEAGLE = 39
     Public sDUALS = 39
     Public sFIVESEVEN = 39
@@ -148,29 +150,3 @@ Public Class cSkinchanger
     End Function
 
 End Class
-
-'Public Sub Skinchanger()
-'     cBasePlayer.LocalPlayer
-
-'    Dim wWeaponActive As cBaseWeapon = pLocalPlayer.ActiveWeapon
-'    Dim wWeaponLast As cBaseWeapon = pLocalPlayer.LastWeapon
-
-'    Dim Xuid As Integer = pLocalPlayer.ActiveWeapon.XuID
-'    mem.WrtInt(wWeaponActive.ptr + m_iItemIDHigh, -1)
-'    mem.WrtInt(wWeaponActive.ptr + m_OriginalOwnerXuidLow, 0)
-'    mem.WrtInt(wWeaponActive.ptr + m_OriginalOwnerXuidHigh, 0)
-'    mem.WrtInt(wWeaponActive.ptr + m_nFallbackPaintKit, GetWeaponSkin(wWeaponActive.ID))
-'    mem.WrtInt(wWeaponActive.ptr + m_nFallbackSeed, Rnd.Next(1, Integer.MaxValue - 1))
-'    mem.WrtFloat(wWeaponActive.ptr + m_flFallbackWear, 0.001)
-'    'mem.WrtInt(wWeaponActive.ptr + m_iItemDefinitionIndex, 507)
-'    mem.WrtInt(wWeaponActive.ptr + m_iAccountID, Xuid)
-
-'    mem.WrtInt(wWeaponLast.ptr + m_iItemIDHigh, -1)
-'    mem.WrtInt(wWeaponLast.ptr + m_OriginalOwnerXuidLow, 0)
-'    mem.WrtInt(wWeaponLast.ptr + m_OriginalOwnerXuidHigh, 0)
-'    mem.WrtInt(wWeaponLast.ptr + m_nFallbackPaintKit, GetWeaponSkin(wWeaponLast.ID))
-'    mem.WrtInt(wWeaponLast.ptr + m_nFallbackSeed, Rnd.Next(1, Integer.MaxValue - 1))
-'    mem.WrtFloat(wWeaponLast.ptr + m_flFallbackWear, 0.001)
-'    mem.WrtInt(wWeaponLast.ptr + m_iAccountID, Xuid)
-
-'End Sub

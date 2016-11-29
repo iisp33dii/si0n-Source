@@ -33,8 +33,10 @@ Public Class cMisc
     End Sub
 
     Public Sub Nohands()
-        If mem.rdInt(pLocalPlayer.ptr + m_szArmsModel) <> -1 Then
-            mem.WrtInt(pLocalPlayer.ptr + m_szArmsModel, -1)
+        If GetAsyncKeyState(KeyBinds.SkinchangerKey) Then
+            If mem.rdInt(pLocalPlayer.ptr + m_szArmsModel) <> -1 Then
+                mem.WrtInt(pLocalPlayer.ptr + m_szArmsModel, -1)
+            End If
         End If
     End Sub
 
@@ -52,14 +54,6 @@ Public Class cMisc
                 If b0nce Then mem.WrtInt(pLocalPlayer.ptr + m_iObserverMode, 0)
         End Select
     End Sub
-
-
-
-    Public Sub Test()
-
-    End Sub
-
-
 
     Public Sub Rankscan()
         Dim pPlayer As New cBasePlayer(Nothing)

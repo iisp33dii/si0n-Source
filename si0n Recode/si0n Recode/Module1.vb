@@ -1,15 +1,14 @@
-﻿
+﻿Imports si0n.cUsefulFuncs
+Imports si0n.cSDK
+Imports si0n.KeyBinds
 
 'Just to provide some credits:
 'https://www.unknowncheats.me/forum/counterstrike-global-offensive/139780-vb-net-external-esp-recoil-crosshair.html got me kinda started with the memory class and the other stuff
+'Credits to Mercy for his Raytracing resources
 'Klorik, he helped me with the knifechanger
 'The guy who made the sigscanning function
 'Unknowncheats.me for the resources i used to make this
 
-
-Imports si0n.cUsefulFuncs
-Imports si0n.cSDK
-Imports si0n.KeyBinds
 Module Module1
 
     Public Misc_thread As Threading.Thread = New Threading.Thread(AddressOf loop_Misc)
@@ -75,23 +74,20 @@ Module Module1
             Caption = GetCaption()
             RestartIfCsgoNotValid()
 
+            If GetAsyncKeyState(SkinchangerKey) Then Engine.Fullupdate()
+            If GetAsyncKeyState(Keys.Down) Then Misc.Rankscan()
             If GetAsyncKeyState(Keys.F5) Then
                 Settings.Load()
                 Console.Beep()
                 sleep(300)
             End If
 
-            If GetAsyncKeyState(SkinchangerKey) Then Engine.Fullupdate()
-
-            If InGame Then ' And Caption = GameCaption
-
+            If InGame And Caption = GameCaption Then
                 If Settings.Bhop Then Misc.Bhop()
                 If Settings.Noflash Then Misc.Noflash(Settings.NoflashMaxAlpha)
-                'If Settings.Nohands Then misc.Nohands()
+                If Settings.Nohands Then Misc.Nohands()
                 If Settings.Radar Then Misc.Radar()
                 Misc.ThirdPerson(Settings.Thirdperson)
-                If GetAsyncKeyState(Keys.Down) Then Misc.Rankscan()
-                Misc.test
             End If
 
             sleep(1)
@@ -101,7 +97,7 @@ Module Module1
     Public Sub loop_Aimbot()
         While True
 
-            If InGame Then ' And Caption = GameCaption
+            If InGame And Caption = GameCaption Then
                 If Settings.Aimbot Then Aimbot.Aimbot(Settings.AimSpot, Settings.FovRifles, Settings.SmoothRifles, Settings.FovPistols, Settings.SmoothPistols, Settings.FovSnipers, Settings.SmoothSnipers)
 
                 If Settings.Trigger Then Triggerbot.Triggerbot(Settings.TriggerMode)
@@ -114,7 +110,7 @@ Module Module1
     Public Sub loop_esp()
         While True
 
-            If InGame Then ' And Caption = GameCaption
+            If InGame Then
                 pLocalPlayer.ptr = cBasePlayer.LocalPlayer()
                 If Settings.ESP Or Settings.clrRender Then ESP.GlowESP(Settings.ESP, Settings.clrRender, Settings.ESPmode)
             End If
@@ -126,7 +122,7 @@ Module Module1
     Public Sub loop_SkinChanger()
         While True
 
-            If InGame And Not GetAsyncKeyState(Keys.Tab) Then ' And Caption = GameCapt+ion
+            If InGame And Not GetAsyncKeyState(Keys.Tab) Then
                 If Settings.SkinChangera Then SkinChanger.Skinchanger()
             End If
 
@@ -137,7 +133,7 @@ Module Module1
     Public Sub loop_KnifeChanger()
         While True
 
-            If InGame Then ' And Caption = GameCaption
+            If InGame Then
                 If Settings.KnifeChangera Then KnifeChanger.KnifeChanger(Settings.KnifeModel)
             ElseIf Not InGame Then
                 KnifeChanger.Reset()
@@ -146,7 +142,5 @@ Module Module1
             sleep(1)
         End While
     End Sub
-
-
 
 End Module

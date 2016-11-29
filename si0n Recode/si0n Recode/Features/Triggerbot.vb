@@ -8,11 +8,12 @@ Public Class cTriggerbot
     Public Sub Triggerbot(Mode As Integer)
         If GetAsyncKeyState(KeyBinds.TriggerKey) Then
             If Mode = 1 Then
+                '<< bad HitboxTrigger with hardcoded hitboxes and no vischeck >>
 
-                Aimbot.GetNextEnemyToCrosshair(6, pTriggerPlayer.ptr)
+                Aimbot.GetNextEnemyToCrosshair(8, pTriggerPlayer.ptr)
                 If pTriggerPlayer.Health > 0 And Not pTriggerPlayer.Dormant Then
 
-                    Dim bBone As Vec3 = pTriggerPlayer.BonePosition(6) + New Vec3(0, 0, 3)
+                    Dim bBone As Vec3 = pTriggerPlayer.BonePosition(8) + New Vec3(0, 0, 3)
                     Dim BottomHitboxHead As Vec3 = New Vec3(bBone.x - 2.54F, bBone.y - 4.145F, bBone.z - 7.0F)
                     Dim TopHitboxHead As Vec3 = New Vec3(bBone.x + 2.54F, bBone.y + 4.145F, bBone.z + 3.0F)
 
@@ -36,10 +37,11 @@ Public Class cTriggerbot
                 End If
 
             ElseIf Mode = 2 Then
+                '<< casual incross trigger >>
                 Dim IncrossIndex As Integer = pLocalPlayer.IncrossIndex
                 If IncrossIndex > 0 And IncrossIndex < 65 Then
                     pTriggerPlayer.ptr = cBasePlayer.PointerByIndex(IncrossIndex)
-                    If Not pTriggerPlayer.Team = pLocalPlayer.Team Then ' And Not pTriggerPlayer.Immune
+                    If Not pTriggerPlayer.Team = pLocalPlayer.Team Then
                         Dim WeaponId As Integer = pLocalPlayer.ActiveWeapon.ID
                         If WeaponId <> ENUMS.ItemDefinitionIndex.TASER Then
                             cBasePlayer.ForceAttack(0, 12, 10)

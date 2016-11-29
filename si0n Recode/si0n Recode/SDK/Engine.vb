@@ -28,6 +28,4 @@ Public Class cEngine
     Public Sub Fullupdate()
         mem.WrtInt(Clientstate() + &H16C, -1)
     End Sub
-
-
 End Class

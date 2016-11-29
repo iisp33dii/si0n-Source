@@ -60,7 +60,7 @@ Public Class cBasePlayer
     End Function
 
     Public Function IncrossIndex()
-        Return mem.rdInt(ptr + m_iCrosshairId) ' m_iCrosshairId
+        Return mem.rdInt(ptr + m_iCrosshairId)
     End Function
 
     Public Function Name(Index As Integer) As String
@@ -121,38 +121,20 @@ Public Class cBasePlayer
         Return mem.ReadMemory(Of Vec3)(LocalPlayer() + m_vecVelocity).Length
     End Function
 
-    ' 	DWORD pEntity;
-    '	float r;
-    '	float g;
-    '	float b;
-    '   float a;
-    '   uint8_t unk1[16];
-    ' 	bool RenderWhenOccluded;
-    '   bool RenderWhenUnoccluded;
-    '	bool FullBloom;
-    ' 	uint8_t unk2[14];
-    Public Structure GlowObjectPlayer
-        Dim r As Single '0x4
-        Dim g As Single '0x8
-        Dim b As Single '0xC
-        Dim a As Single '0x10
-        Dim _1 As Integer '0x18
-        Dim _2 As Integer '0x20
-        Dim _3 As Single '0x24
-        Dim RWO As Boolean '
-
-    End Structure
-
     Public Sub Glow(Glow_r As Single, Glow_g As Single, Glow_b As Single, Glow_a As Single, Glow_rwo As Boolean, Glow_rwuo As Boolean, Glow_fb As Boolean)
         Dim GlowIndex As Integer = mem.rdInt(ptr + m_iGlowIndex)
         Dim GlowObjectManager As Integer = mem.rdInt(mem.ClientDLL + dwGlowObjectManager)
-        mem.WrtFloat(GlowObjectManager + (GlowIndex * &H38) + &H4, Glow_r)
-        mem.WrtFloat(GlowObjectManager + (GlowIndex * &H38) + &H8, Glow_g)
-        mem.WrtFloat(GlowObjectManager + (GlowIndex * &H38) + &HC, Glow_b)
-        mem.WrtFloat(GlowObjectManager + (GlowIndex * &H38) + &H10, Glow_a)
-        mem.WrtInt(GlowObjectManager + (GlowIndex * &H38) + &H24, Glow_rwo)
-        mem.WrtInt(GlowObjectManager + (GlowIndex * &H38) + &H25, Glow_rwuo)
-        mem.WrtInt(GlowObjectManager + (GlowIndex * &H38) + &H26, Glow_fb)
+        Dim GlowObject As cESP.GlowObject_t = mem.ReadMemory(Of cESP.GlowObject_t)(GlowObjectManager + (GlowIndex * &H38))
+
+        GlowObject.r = Glow_r
+        GlowObject.g = Glow_g
+        GlowObject.b = Glow_b
+        GlowObject.a = Glow_a
+        GlowObject.RenderWhenOccluded = Glow_rwo
+        GlowObject.RenderWhenUnoccluded = Glow_rwuo
+        GlowObject.FullBloom = Glow_fb
+
+        mem.WriteStruct(Of cESP.GlowObject_t)(GlowObjectManager + (GlowIndex * &H38), GlowObject)
     End Sub
 
     Public Structure clr_s
@@ -183,5 +165,4 @@ Public Class cBasePlayer
         mem.WrtInt(mem.ClientDLL + dwForceAttack, 4)
         cUsefulFuncs.sleep(Delay3)
     End Sub
-
 End Class

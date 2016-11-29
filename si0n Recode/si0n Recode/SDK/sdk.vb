@@ -7,7 +7,6 @@ Public Class cSDK
     Public Shared InGame As Boolean
     Public Shared TabX As Boolean
 
-
     Public Shared mem As New cMemoryManager
     Public Shared Engine As New cEngine
     Public Shared Settings As New cSettings
@@ -15,7 +14,6 @@ Public Class cSDK
     Public Shared cfg As New cConfig(System.AppDomain.CurrentDomain.BaseDirectory & "Config.ini")
     Public Shared ofs As New cConfig(System.AppDomain.CurrentDomain.BaseDirectory & "Offsets.ini")
 
-    'Public Shared gVars As New cGlobalVarsBase
     Public Shared Misc As New cMisc
     Public Shared Aimbot As New cAimbot
     Public Shared ESP As New cESP
@@ -24,7 +22,4 @@ Public Class cSDK
     Public Shared SkinChanger As New cSkinchanger
 
     Public Shared pLocalPlayer As New cBasePlayer(Nothing)
-
-
-
 End Class
