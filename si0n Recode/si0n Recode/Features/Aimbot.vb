@@ -98,32 +98,33 @@ Public Class cAimbot
         End If
     End Sub
 
-    Private Sub SetAnglesSilent(Angle As Vec3)
+        'dis doesnt work
+    'Private Sub SetAnglesSilent(Angle As Vec3)
 
-        Dim userCMDSequenceNum As Integer = 0
-        Dim oldAngles As Vec3
-        Dim userCMD As Integer
+      '  Dim userCMDSequenceNum As Integer = 0
+     '   Dim oldAngles As Vec3
+     '   Dim userCMD As Integer
 
-        Dim curSequenceNum As Integer = mem.rdInt(Engine.Clientstate + &H4C7C) + 1
-        userCMD += (curSequenceNum Mod 150) * &H64
+       ' Dim curSequenceNum As Integer = mem.rdInt(Engine.Clientstate + &H4C7C) + 1
+      '  userCMD += (curSequenceNum Mod 150) * &H64
 
-        While userCMDSequenceNum <> curSequenceNum
-            oldAngles = Engine.ViewAngles
-            userCMDSequenceNum = mem.rdInt(userCMD + &H4)
-            wl(curSequenceNum & " " & userCMDSequenceNum)
-        End While
+       ' While userCMDSequenceNum <> curSequenceNum
+        '    oldAngles = Engine.ViewAngles
+       '     userCMDSequenceNum = mem.rdInt(userCMD + &H4)
+      '      wl(curSequenceNum & " " & userCMDSequenceNum)
+      '  End While
 
-        Angle = ClampAngle(Angle)
+      '  Angle = ClampAngle(Angle)
 
-        wl(mem.ReadMemory(Of Vec3)(userCMD + &HC).tostring)
+      '  wl(mem.ReadMemory(Of Vec3)(userCMD + &HC).tostring)
 
-        For i = 0 To 20
+     '   For i = 0 To 20
             mem.WriteStruct(Of Vec3)(userCMD + &HC, Angle)
-        Next
-        Engine.SetAngles(oldAngles)
-        sleep(6)
+     '   Next
+      '  Engine.SetAngles(oldAngles)
+      '  sleep(6)
 
-    End Sub
+  '  End Sub
 
     'Private Function SetSendPacket(mode As Boolean)
     '    If mode Then
