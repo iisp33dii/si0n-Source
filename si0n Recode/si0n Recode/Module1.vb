@@ -39,15 +39,19 @@ Module Module1
 
         Console.ForegroundColor = ConsoleColor.Green
 
-        wl("searching process...")
+        wl("Waiting for CSGO...")
         Do Until mem.Setup("csgo")
             sleep(1000)
         Loop
-        wl("process found...")
-        wl("modules found...")
-        wl("cheat started...")
-        Console.ForegroundColor = ConsoleColor.White
-        wl(cfg.ConfigPath.ToString)
+        wl("CSGO Found...")
+        wl("Modules Found...")
+        wl("Cheat is now Running...")
+        wl("")
+        wl("Press F5 to Reload the Config")
+        wl("")
+        wl("Config Path: " + cfg.ConfigPath.ToString)
+
+        Console.ForegroundColor = ConsoleColor.Red
 
         If Not cfg.exists Then
             Settings.Save()
@@ -75,7 +79,7 @@ Module Module1
             RestartIfCsgoNotValid()
 
             If GetAsyncKeyState(SkinchangerKey) Then Engine.Fullupdate()
-            If GetAsyncKeyState(Keys.Down) Then Misc.Rankscan()
+            If GetAsyncKeyState(RankScannerKey) Then Misc.Rankscan()
             If GetAsyncKeyState(Keys.F5) Then
                 Settings.Load()
                 Console.Beep()
