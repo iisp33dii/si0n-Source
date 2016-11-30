@@ -100,7 +100,6 @@ Public Class cSettings
             '<<< KEYS >>>'
             KeyBinds.TriggerKey = cfg.read("KEYS", "Trigger")
             KeyBinds.SkinchangerKey = cfg.read("KEYS", "Skinchanger")
-            KeyBinds.RankScannerKey = cfg.read("KEYS", "RankScanner")
 
             '<<< SkinChanger >>>
             SkinChangera = cfg.read("SKINS", "Active")
@@ -189,7 +188,6 @@ Public Class cSettings
         '<<< KEYS >>>'
         cfg.write("KEYS", "Trigger", KeyBinds.TriggerKey)
         cfg.write("KEYS", "Skinchanger", KeyBinds.SkinchangerKey)
-        cfg.write("KEYS", "RankScanner", KeyBinds.RankScannerKey)
 
         '<<< Skinchanger >>>
         cfg.write("SKINS", "Active", SkinChangera)
