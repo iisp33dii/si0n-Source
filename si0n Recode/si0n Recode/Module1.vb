@@ -1,4 +1,4 @@
-Imports si0n.cUsefulFuncs
+﻿Imports si0n.cUsefulFuncs
 Imports si0n.cSDK
 Imports si0n.KeyBinds
 
@@ -38,25 +38,30 @@ Module Module1
         CheckIfAppIsAllreadyRunning()
 
         Console.ForegroundColor = ConsoleColor.Green
-
-        wl("searching process...")
+        
+        If Not ofs.exists Then
+            wl("You forgot the Offsets File uff")
+            Settings.CreateOffsetFile()
+            wl("Offsets File Created")
+            wl("Hack will Exit in 3 Seconds")
+            sleep(3000)
+            Environment.Exit(exitCode := 0)
+        End If
+        
+        wl("Searching CSGO...")
         Do Until mem.Setup("csgo")
             sleep(1000)
         Loop
-        wl("process found...")
-        wl("modules found...")
-        wl("cheat started...")
-        Console.ForegroundColor = ConsoleColor.White
-        wl(cfg.ConfigPath.ToString)
+        wl("CSGO Found...")
+        wl("Modules Found...")
+        wl("Cheat is Running...")
+        
+        wl("Config Path: " + cfg.ConfigPath.ToString)
+
+        Console.ForegroundColor = ConsoleColor.Red
 
         If Not cfg.exists Then
             Settings.Save()
-        End If
-
-        If Not System.IO.File.Exists("Offsets.ini") Then
-            wl("")
-            Console.ForegroundColor = ConsoleColor.Red
-            wl("Offsets file not found. Check if its there.")
         End If
 
         Settings.Load()
@@ -69,6 +74,7 @@ Module Module1
         KnifeChanger_thread.Priority = Threading.ThreadPriority.Highest
         Aimbot_thread.Priority = Threading.ThreadPriority.Highest
 
+
         Console.Beep()
         Console.Read()
     End Sub
@@ -80,7 +86,7 @@ Module Module1
             RestartIfCsgoNotValid()
 
             If GetAsyncKeyState(SkinchangerKey) Then Engine.Fullupdate()
-            If GetAsyncKeyState(Keys.Down) Then Misc.Rankscan()
+            If GetAsyncKeyState(RankScannerKey) Then Misc.Rankscan()
             If GetAsyncKeyState(Keys.F5) Then
                 Settings.Load()
                 Console.Beep()
