@@ -38,16 +38,24 @@ Module Module1
         CheckIfAppIsAllreadyRunning()
 
         Console.ForegroundColor = ConsoleColor.Green
-        
+
         If Not ofs.exists Then
-            wl("You forgot the Offsets File uff")
+            wl("")
+            Console.ForegroundColor = ConsoleColor.Red
+            wl("You forgot the Offsets File")
             Settings.CreateOffsetFile()
             wl("Offsets File Created")
             wl("Hack will Exit in 3 Seconds")
             sleep(3000)
-            Environment.Exit(exitCode := 0)
+            Environment.Exit(0)
         End If
-        
+
+        If Not cfg.exists Then
+            Settings.Save()
+        End If
+
+        Settings.Load()
+
         wl("Searching CSGO...")
         Do Until mem.Setup("csgo")
             sleep(1000)
@@ -55,16 +63,9 @@ Module Module1
         wl("CSGO Found...")
         wl("Modules Found...")
         wl("Cheat is Running...")
-        
+
+        Console.ForegroundColor = ConsoleColor.White
         wl("Config Path: " + cfg.ConfigPath.ToString)
-
-        Console.ForegroundColor = ConsoleColor.Red
-
-        If Not cfg.exists Then
-            Settings.Save()
-        End If
-
-        Settings.Load()
 
         Misc_thread.Start()
         Aimbot_thread.Start()
@@ -73,7 +74,6 @@ Module Module1
         KnifeChanger_thread.Start()
         KnifeChanger_thread.Priority = Threading.ThreadPriority.Highest
         Aimbot_thread.Priority = Threading.ThreadPriority.Highest
-
 
         Console.Beep()
         Console.Read()

@@ -7,44 +7,37 @@ Imports si0n
 Public Class cMemoryManager
 
 #Region "WinAPI"
-    Private Declare Function ReadProcessMemory Lib "kernel32" (hProcess As Integer, lpBaseAddress As Integer, buffer As Byte(), size As Integer, lpNumberOfBytesrd As Integer) As Boolean
-    Private Declare Function WriteProcessMemory Lib "kernel32" (hProcess As Integer, lpBaseAddress As Integer, buffer As Byte(), size As Integer, lpNumberOfBytesWritten As Integer) As Boolean
-    Private Declare Function CloseHandle Lib "kernel32" (hObject As Integer) As Boolean
-    Private Declare Function OpenProcess Lib "kernel32" (processAccess As Integer, bInheritHandle As Boolean, processId As Integer) As Integer
-    Private Declare Function OpenProcess Lib "kernel32" (ByVal dwDesiredAccess As Integer, bInheritHandle As Boolean, processId As UInt32) As Integer
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    Public Shared Function ReadProcessMemory(
+    ByVal hProcess As Integer,
+    ByVal lpBaseAddress As Integer,
+    <Out()> ByVal lpBuffer As Byte(),
+    ByVal dwSize As Integer,
+    ByRef lpNumberOfBytesRead As Integer) As Boolean
+    End Function
 
-    '<DllImport("kernel32.dll", SetLastError:=True)>
-    'Public Function ReadProcessMemory(
-    'ByVal hProcess As Integer,
-    'ByVal lpBaseAddress As Integer,
-    '<Out()> ByVal lpBuffer As Byte(),
-    'ByVal dwSize As Integer,
-    'ByRef lpNumberOfBytesRead As Integer) As Boolean
-    'End Function
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    Public Shared Function WriteProcessMemory(
+    ByVal hProcess As Integer,
+    ByVal lpBaseAddress As Integer,
+    ByVal lpBuffer As Byte(),
+    ByVal nSize As Int32,
+    <Out()> ByRef lpNumberOfBytesWritten As Integer) As Boolean
+    End Function
 
-    '<DllImport("kernel32.dll", SetLastError:=True)>
-    'Public Function WriteProcessMemory(
-    'ByVal hProcess As Integer,
-    'ByVal lpBaseAddress As Integer,
-    'ByVal lpBuffer As Byte(),
-    'ByVal nSize As Int32,
-    '<Out()> ByRef lpNumberOfBytesWritten As Integer) As Boolean
-    'End Function
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    Public Shared Function OpenProcess(
+    ByVal dwDesiredAcces As Integer,
+    ByVal bInheritHandle As Boolean,
+    ByVal processID As Integer
+     ) As Integer
+    End Function
 
-
-    '<DllImport("kernel32.dll", SetLastError:=True)>
-    'Public Function OpenProcess(
-    'ByVal dwDesiredAcces As Integer,
-    'ByVal bInheritHandle As Boolean,
-    'ByVal processID As Integer
-    ' ) As Integer
-    'End Function
-
-    '<DllImport("kernel32.dll", SetLastError:=True)>
-    '<ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)>
-    '<SuppressUnmanagedCodeSecurity>
-    'Public Function CloseHandle(ByVal hObject As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
-    'End Function
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    <ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)>
+    <SuppressUnmanagedCodeSecurity>
+    Public Shared Function CloseHandle(ByVal hObject As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
+    End Function
 #End Region
 
     Private pProcess As Process()

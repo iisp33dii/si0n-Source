@@ -1,6 +1,10 @@
-﻿Public Class cUsefulFuncs
+﻿Imports System.Runtime.InteropServices
 
-    Public Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
+Public Class cUsefulFuncs
+
+    <DllImport("user32.dll")>
+    Shared Function GetAsyncKeyState(ByVal vKey As Long) As Short
+    End Function
 
     Public Shared Sub sleep(amount As Integer)
         Threading.Thread.Sleep(amount)
@@ -29,8 +33,14 @@
     End Function
 
 #Region "Caption/ WindowText"
-    Private Declare Function GetForegroundWindow Lib "user32" Alias "GetForegroundWindow" () As IntPtr
-    Private Declare Auto Function GetWindowText Lib "user32" (ByVal hWnd As System.IntPtr, ByVal lpString As System.Text.StringBuilder, ByVal cch As Integer) As Integer
+
+    <DllImport("user32.dll")>
+    Public Shared Function GetForegroundWindow() As IntPtr
+    End Function
+
+    <DllImport("user32.dll", EntryPoint:="GetWindowText")>
+    Public Shared Function GetWindowText(ByVal hwnd As Integer, ByVal lpString As System.Text.StringBuilder, ByVal cch As Integer) As Integer
+    End Function
 
     Public Shared Function GetCaption() As String
         Dim Caption As New System.Text.StringBuilder(256)
