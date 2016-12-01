@@ -38,16 +38,27 @@ Module Module1
         CheckIfAppIsAllreadyRunning()
 
         Console.ForegroundColor = ConsoleColor.Green
-
-        wl("searching process...")
+        
+        If Not ofs.exists Then
+            wl("You forgot the Offsets File uff")
+            Settings.CreateOffsetFile()
+            wl("Offsets File Created")
+            wl("Hack will Exit in 3 Seconds")
+            sleep(3000)
+            Environment.Exit(exitCode := 0)
+        End If
+        
+        wl("Searching CSGO...")
         Do Until mem.Setup("csgo")
             sleep(1000)
         Loop
-        wl("process found...")
-        wl("modules found...")
-        wl("cheat started...")
-        Console.ForegroundColor = ConsoleColor.White
-        wl(cfg.ConfigPath.ToString)
+        wl("CSGO Found...")
+        wl("Modules Found...")
+        wl("Cheat is Running...")
+        
+        wl("Config Path: " + cfg.ConfigPath.ToString)
+
+        Console.ForegroundColor = ConsoleColor.Red
 
         If Not cfg.exists Then
             Settings.Save()
@@ -75,7 +86,7 @@ Module Module1
             RestartIfCsgoNotValid()
 
             If GetAsyncKeyState(SkinchangerKey) Then Engine.Fullupdate()
-            If GetAsyncKeyState(Keys.Down) Then Misc.Rankscan()
+            If GetAsyncKeyState(RankScannerKey) Then Misc.Rankscan()
             If GetAsyncKeyState(Keys.F5) Then
                 Settings.Load()
                 Console.Beep()
