@@ -38,7 +38,16 @@ Module Module1
         CheckIfAppIsAllreadyRunning()
 
         Console.ForegroundColor = ConsoleColor.Green
-
+        
+        If Not ofs.exists Then
+            wl("You forgot the Offsets File uff")
+            Settings.CreateOffsetFile()
+            wl("Offsets File Created")
+            wl("Hack will Exit in 3 Seconds")
+            sleep(3000)
+            Environment.Exit(exitCode := 0)
+        End If
+        
         wl("Searching CSGO...")
         Do Until mem.Setup("csgo")
             sleep(1000)
