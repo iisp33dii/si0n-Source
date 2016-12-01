@@ -1,4 +1,4 @@
-﻿Public Structure Vec3
+Public Structure Vec3
 
     Public x As Single
     Public y As Single
@@ -38,15 +38,11 @@
     End Operator
 
     Public Shared Operator <>(vec1 As Vec3, vec2 As Vec3) As Boolean
-        If vec1.x <> vec2.x Then Return True
-        If vec1.y <> vec2.y Then Return True
-        If vec1.z <> vec2.z Then Return True
+        If vec1.x <> vec2.x Or vec1.y <> vec2.y Or vec1.z <> vec2.z Then Return True : Return False
     End Operator
 
     Public Shared Operator =(vec1 As Vec3, vec2 As Vec3) As Boolean
-        If vec1.x = vec2.x Then Return True
-        If vec1.y = vec2.y Then Return True
-        If vec1.z = vec2.z Then Return True
+        If vec1.x = vec2.x And vec1.y = vec2.y And vec1.z = vec2.z Then Return True : Return False
     End Operator
 
     Public Shared Operator /(vec1 As Vec3, vec2 As Vec3) As Vec3
