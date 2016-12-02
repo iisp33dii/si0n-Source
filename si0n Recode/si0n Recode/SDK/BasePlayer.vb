@@ -102,13 +102,12 @@ Public Class cBasePlayer
         End Try
     End Function
 
+    'Thanks to Illusionisten  http://www.unknowncheats.me/forum/1592080-post53.html
     Public Function BonePosition(BoneID As Integer) As Vec3
         Dim BoneMatrix As Integer = mem.rdInt(ptr + m_dwBoneMatrix)
-        Dim Bone As New Vec3(0, 0, 0)
-        Bone.x = mem.rdFloat(BoneMatrix + &H30 * BoneID + &HC)
-        Bone.y = mem.rdFloat(BoneMatrix + &H30 * BoneID + &H1C)
-        Bone.z = mem.rdFloat(BoneMatrix + &H30 * BoneID + &H2C)
-        Return Bone
+        Dim buffer As Byte() = New Byte(36) {}
+        buffer = mem.rdMem(BoneMatrix + &H30 * BoneID + &HC, 36)
+        Return New Vec3(BitConverter.ToSingle(buffer, 0), BitConverter.ToSingle(buffer, 16), BitConverter.ToSingle(buffer, 32))
     End Function
 
     Public Function ActiveWeapon() As cBaseWeapon
