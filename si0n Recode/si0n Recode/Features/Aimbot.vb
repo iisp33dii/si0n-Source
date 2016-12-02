@@ -216,7 +216,7 @@ Public Class cAimbot
     End Function
 
     Private Function ClampAngle(ViewAngle As Vec3)
-        If ViewAngle.x < -89.0F Then ViewAngle.x = 89.0F
+        If ViewAngle.x < -89.0F Then ViewAngle.x = -89.0F
         If ViewAngle.x > 89.0F Then ViewAngle.x = 89.0F
         If ViewAngle.y < -180.0F Then ViewAngle.y += 360.0F
         If ViewAngle.y > 180.0F Then ViewAngle.y -= 360.0F
