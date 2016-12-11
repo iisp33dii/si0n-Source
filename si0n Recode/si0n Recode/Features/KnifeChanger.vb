@@ -58,6 +58,7 @@ Public Class cKnifeChanger
                 Dim tmpSkinModel As tSkinModel = mem.ReadMemory(Of tSkinModel)(WeaponBase + m_iWorldModelIndex)
 
                 If pLocalPlayer.ActiveWeapon.Clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And tmpSkinModel.off1 <> KnifeID + 1 Or tmpSkinModel.off2 <> KnifeID Then
+                    mem.WrtInt(WeaponBase + m_nModelIndex, SkinModel.off2)        
                     mem.WrtInt(WeaponBase + m_iWorldModelIndex, SkinModel.off1)
                     mem.WrtInt(WeaponBase + m_iWorldModelIndex + &H4, SkinModel.off2)
                     'mem.WriteStruct(Of tSkinModel)(WeaponBase + m_iWorldModelIndex, tmpSkinModel)
