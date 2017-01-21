@@ -17,12 +17,9 @@ Public Class cMisc
     End Sub
 
     Public Sub Noflash(value As Integer)
-
-        If GetAsyncKeyState(Keys.Down) Then
             If pLocalPlayer.FlashMaxAlpha <> value Then
                 mem.WrtFloat(pLocalPlayer.ptr + m_flFlashMaxAlpha, value)
-            End If
-        End If
+            End If     
     End Sub
 
     Public Sub Radar()
