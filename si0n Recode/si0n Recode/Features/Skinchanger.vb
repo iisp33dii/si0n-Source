@@ -45,7 +45,7 @@ Public Class cSkinchanger
 
     Public Sub Skinchanger()
 
-        For i = 1 To 32
+        For i = 1 To 9
             Dim curWeaponIndex As Integer = mem.rdInt(pLocalPlayer.ptr + m_hMyWeapons + ((i - 1) * &H4)) And &HFFF
             Dim curWeaponEnt As Integer = mem.rdInt(mem.ClientDLL + dwEntityList + (curWeaponIndex - 1) * &H10)
             pWeapon.ptr = curWeaponEnt
