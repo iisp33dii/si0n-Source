@@ -1,9 +1,9 @@
-﻿Imports si0n.cSDK
+Imports si0n.cSDK
 Public Class Offsets
     '<< Undumped >>'
     Public Shared m_bDormant = &HE9
     Public Shared m_clrRender = &H70
-    Public Shared m_dwInGame = &H100
+    Public Shared m_dwInGame = &H108
     Public Shared m_nModelIndex = &H254
     Public Shared m_hViewModel = &H32FC
     Public Shared m_iWorldModelIndex = &H31E4
@@ -44,16 +44,13 @@ Public Class Offsets
 
     '<< Dumped sigs>>'
     Public Shared dwEntityList = FindPattern.Scanf(mem.ClientDLL, "BB????????83FF010F8C????????3BF8", 1, 0, True)
-    Public Shared dwClientState = FindPattern.Scanf(mem.EngineDLL, "A1????????33D26A??6A??33C989B0084E????A1", 1, 0, True)
+    Public Shared dwClientState = FindPattern.Scanf(mem.EngineDLL, "A1????????33D26A006A0033C989B0", 1, 0, True)
     Public Shared dwForceAttack = FindPattern.Scanf(mem.ClientDLL, "890D????????8B0D????????8BF28BC183CE04", 2, 0, True)
     Public Shared dwForceJump = FindPattern.Scanf(mem.ClientDLL, "890D????????8B0D????????8BF28BC183CE08", 2, 0, True)
     Public Shared dwGlowObjectManager = FindPattern.Scanf(mem.ClientDLL, "A1????????A801754B", &H1, &H4, True)
     Public Shared dwLocalPlayer = FindPattern.Scanf(mem.ClientDLL, "A3????????C705????????????????E8????????59C36A??", 1, 16, True)
     Public Shared dwRadarBase = FindPattern.Scanf(mem.ClientDLL, "A1????????8B0CB08B01FF50??463B35????????7CEA8B0D", 1, 0, True)
     Public Shared dwViewAngles = FindPattern.Scanf(mem.EngineDLL, "F30F1180????????D94604D905", 4, 0, False)
-    Public Shared dwGlobalVars = FindPattern.Scanf(mem.ClientDLL, "68????????68????????FF500885C0", 1, 0, True)
+    Public Shared dwGlobalVars = FindPattern.Scanf(mem.EngineDLL, "F30F1180????????D94604D905", 4, 0, False)
     Public Shared dwPlayerResource = FindPattern.Scanf(mem.ClientDLL, "8B3D????????85FF0F84????????81C7", 2, 0, True)
 End Class
-
-
-
