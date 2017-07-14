@@ -3,7 +3,7 @@
 Public Class cUsefulFuncs
 
     <DllImport("user32.dll")>
-    Shared Function GetAsyncKeyState(ByVal vKey As Long) As Short
+    Shared Function GetAsyncKeyState(ByVal vKey As Integer) As Short
     End Function
 
     Public Shared Sub sleep(amount As Integer)
