@@ -1,6 +1,5 @@
 ﻿Public Class ENUMS
 
-    Public Enum ItemDefinitionIndex
 
         DEAGLE = 1
         ELITE = 2
