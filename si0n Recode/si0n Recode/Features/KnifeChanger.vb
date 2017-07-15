@@ -32,7 +32,7 @@ Public Class cKnifeChanger
                     NeedIndexes = False
                 Case ItemDefinitionIndex.GLOCK
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
-                    KnifeID = StartPoint + 249 + (3 * KnifeModel - 3)
+                    KnifeID = StartPoint + 248 + (3 * KnifeModel - 3)
                     NeedIndexes = False
                 Case ItemDefinitionIndex.P2000
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
@@ -40,7 +40,7 @@ Public Class cKnifeChanger
                     NeedIndexes = False
                 Case ItemDefinitionIndex.DEAGLE
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
-                    KnifeID = StartPoint + 276 + (3 * KnifeModel - 3)
+                    KnifeID = StartPoint + 275 + (3 * KnifeModel - 3)
                     NeedIndexes = False
             End Select
 
