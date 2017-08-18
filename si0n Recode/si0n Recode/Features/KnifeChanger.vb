@@ -28,21 +28,23 @@ Public Class cKnifeChanger
             Select Case WeaponDefID
                 Case ItemDefinitionIndex.USP
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
-                    KnifeID = StartPoint + 25 + (3 * KnifeModel - 3)
+                    KnifeID = StartPoint + 28 + (3 * KnifeModel - 3)
                     NeedIndexes = False
                 Case ItemDefinitionIndex.GLOCK
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
-                    KnifeID = StartPoint + 248 + (3 * KnifeModel - 3)
+                    KnifeID = StartPoint + 273 + (3 * KnifeModel - 3)
                     NeedIndexes = False
                 Case ItemDefinitionIndex.P2000
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
-                    KnifeID = StartPoint + 102 + (3 * KnifeModel - 3)
+                    KnifeID = StartPoint + 128 + (3 * KnifeModel - 3)
                     NeedIndexes = False
                 Case ItemDefinitionIndex.DEAGLE
                     StartPoint = mem.rdInt(KnifeBase + m_nModelIndex)
-                    KnifeID = StartPoint + 275 + (3 * KnifeModel - 3)
+                    KnifeID = StartPoint + 300 + (3 * KnifeModel - 3)
                     NeedIndexes = False
             End Select
+
+            Console.WriteLine(KnifeID)
 
         ElseIf pLocalPlayer.ActiveWeapon.Clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And Not NeedIndexes And WeaponBase >= 1000 Then
             Dim hWeapon As Integer = mem.rdInt(pLocalPlayer.ptr + m_hViewModel)

@@ -5,7 +5,7 @@ Public Class Offsets
     Public Shared m_clrRender = &H70
     Public Shared m_dwInGame = &H108
     Public Shared m_nModelIndex = &H254
-    Public Shared m_hViewModel = &H32FC
+    Public Shared m_hViewModel = &H32DC
     Public Shared m_iWorldModelIndex = &H31E4
     Public Shared m_szArmsModel = &H38F3
     Public Shared m_iObserverMode = &H336C
