@@ -96,6 +96,7 @@ Public Class cBasePlayer
         Try
             Dim y As String = cUsefulFuncs.ConvertToBinary(mem.rdInt(ptr + m_bSpottedByMask), 30)
             Dim x As Char = y(y.Count - mem.rdInt(LocalPlayer() + &H64))
+            Console.WriteLine("Name: " & Name(mem.rdInt(ptr + &H64)) & " y: " & y & " x: " & x & " Index: " & mem.rdInt(LocalPlayer() + &H64) & " Spotted: " & If(x = "1", True, False).ToString)
             If x = "1" Then Return True Else Return False
         Catch ex As Exception
             Return False
