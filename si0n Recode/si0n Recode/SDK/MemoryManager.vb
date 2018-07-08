@@ -1,4 +1,4 @@
-﻿Imports System.Runtime.ConstrainedExecution
+Imports System.Runtime.ConstrainedExecution
 Imports System.Runtime.InteropServices
 Imports System.Security
 Imports System.Text
@@ -79,6 +79,14 @@ Public Class cMemoryManager
     End Function
 
     Public Sub WrtInt(pOffset As Integer, pBytes As Integer)
+        WrtMem(pOffset, BitConverter.GetBytes(pBytes))
+    End Sub
+
+    Public Function rdShort(pOffset As Integer) As Short
+        Return BitConverter.ToInt16(rdMem(pOffset, 4), 0)
+    End Function
+
+    Public Sub WrtShort(pOffset As Integer, pBytes As Short)
         WrtMem(pOffset, BitConverter.GetBytes(pBytes))
     End Sub
 
