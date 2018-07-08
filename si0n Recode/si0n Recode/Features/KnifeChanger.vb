@@ -1,4 +1,4 @@
-﻿Imports si0n.cSDK
+Imports si0n.cSDK
 Imports si0n.Offsets
 Imports si0n.cUsefulFuncs
 Imports si0n.ENUMS
@@ -66,8 +66,8 @@ Public Class cKnifeChanger
                     'mem.WriteStruct(Of tSkinModel)(WeaponBase + m_iWorldModelIndex, tmpSkinModel)
                 End If
 
-                If pLocalPlayer.ActiveWeapon.Clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And mem.rdInt(WeaponBase + m_iItemDefinitionIndex) <> GetKnifeID(KnifeModel) Then
-                    mem.WrtInt(WeaponBase + m_iItemDefinitionIndex, GetKnifeID(KnifeModel))
+                If pLocalPlayer.ActiveWeapon.Clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And mem.rdShort(WeaponBase + m_iItemDefinitionIndex) <> GetKnifeID(KnifeModel) Then
+                    mem.WrtShort(WeaponBase + m_iItemDefinitionIndex, GetKnifeID(KnifeModel))
                 End If
 
             End If
