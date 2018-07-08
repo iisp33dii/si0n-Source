@@ -1,4 +1,4 @@
-﻿Imports si0n.cSDK
+Imports si0n.cSDK
 Imports si0n.Offsets
 Imports si0n.ENUMS
 Public Class cBaseWeapon
@@ -13,7 +13,7 @@ Public Class cBaseWeapon
     End Function
 
     Public Function ID()
-        Return mem.rdInt(ptr + m_iItemDefinitionIndex)
+        Return mem.rdShort(ptr + m_iItemDefinitionIndex)
     End Function
 
     Public Function XuID()
@@ -21,7 +21,7 @@ Public Class cBaseWeapon
     End Function
 
 
-    Public Function Type() As Integer
+    Public Function Type() As Short
         Select Case ID()
             Case 1
                 Return WeaponType.Pistol 'Deagle"
