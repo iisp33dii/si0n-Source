@@ -44,7 +44,7 @@ Public Class cKnifeChanger
                     NeedIndexes = False
             End Select
 
-            Console.WriteLine(KnifeID)
+            'Console.WriteLine(KnifeID)
 
         ElseIf pLocalPlayer.ActiveWeapon.Clip = -1 And pLocalPlayer.ActiveWeapon.Type = WeaponType.Knife And Not NeedIndexes And WeaponBase >= 1000 Then
             Dim hWeapon As Integer = mem.rdInt(pLocalPlayer.ptr + m_hViewModel)
