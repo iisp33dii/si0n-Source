@@ -1,4 +1,4 @@
-﻿Public Class ENUMS
+Public Class ENUMS
 
     Public Enum ItemDefinitionIndex
 
@@ -16,6 +16,7 @@
         M4A4 = 16
         MAC10 = 17
         P90 = 19
+        MP5 = 23
         UMP45 = 24
         XM1014 = 25
         BIZON = 26
@@ -69,255 +70,290 @@
     End Enum
 
     Public Enum ClassID
-        AK47 = 1
-        BaseAnimating = 2
-        BaseAnimatingOverlay = 3
-        BaseAttributableItem = 4
-        BaseButton = 5
-        BaseCombatCharacter = 6
-        BaseCombatWeapon = 7
-        BaseCSGrenade = 8
-        BaseCSGrenadeProjectile = 9
-        BaseDoor = 10
-        BaseEntity = 11
-        BaseFlex = 12
-        BaseGrenade = 13
-        BaseParticleEntity = 14
-        BasePlayer = 15
-        BasePropDoor = 16
-        BaseTeamObjectiveResource = 17
-        BaseTempEntity = 18
-        BaseToggle = 19
-        BaseTrigger = 20
-        BaseViewModel = 21
-        BaseVPhysicsTrigger = 22
-        BaseWeaponWorldModel = 23
-        Beam = 24
-        BeamSpotlight = 25
-        BoneFollower = 26
-        BreakableProp = 27
-        BreakableSurface = 28
-        C4 = 29
-        CascadeLight = 30
-        Chicken = 31
-        ColorCorrection = 32
-        ColorCorrectionVolume = 33
-        CSGameRulesProxy = 34
-        CSPlayer = 35
-        CSPlayerResource = 36
-        CSRagdoll = 37
-        CSTeam = 38
-        DEagle = 39
-        DecoyGrenade = 40
-        DecoyProjectile = 41
-        DynamicLight = 42
-        DynamicProp = 43
-        EconEntity = 44
-        Embers = 45
-        EntityDissolve = 46
-        EntityFlame = 47
-        EntityFreezing = 48
-        EntityParticleTrail = 49
-        EnvAmbientLight = 50
-        EnvDetailController = 51
-        EnvDOFController = 52
-        EnvParticleScript = 53
-        EnvProjectedTexture = 54
-        EnvQuadraticBeam = 55
-        EnvScreenEffect = 56
-        EnvScreenOverlay = 57
-        EnvTonemapController = 58
-        EnvWind = 59
-        FEPlayerDecal = 60
-        FireCrackerBlast = 61
-        FireSmoke = 62
-        FireTrail = 63
-        Fish = 64
-        Flashbang = 65
-        FogController = 66
-        FootstepControl = 67
-        Func_Dust = 68
-        Func_LOD = 69
-        FuncAreaPortalWindow = 70
-        FuncBrush = 71
-        FuncConveyor = 72
-        FuncLadder = 73
-        FuncMonitor = 74
-        FuncMoveLinear = 75
-        FuncOccluder = 76
-        FuncReflectiveGlass = 77
-        FuncRotating = 78
-        FuncSmokeVolume = 79
-        FuncTrackTrain = 80
-        GameRulesProxy = 81
-        HandleTest = 82
-        HEGrenade = 83
-        Hostage = 84
-        HostageCarriableProp = 85
-        IncendiaryGrenade = 86
-        Inferno = 87
-        InfoLadderDismount = 88
-        InfoOverlayAccessor = 89
-        Item_Healthshot = 90
-        Knife = 91
-        KnifeGG = 92
-        LightGlow = 93
-        MaterialModifyControl = 94
-        MolotovGrenade = 95
-        MolotovProjectile = 96
-        MovieDisplay = 97
-        ParticleFire = 98
-        ParticlePerformanceMonitor = 99
-        ParticleSystem = 100
-        PhysBox = 101
-        PhysBoxMultiplayer = 102
-        PhysicsProp = 103
-        PhysicsPropMultiplayer = 104
-        PhysMagnet = 105
-        PlantedC4 = 106
-        Plasma = 107
-        PlayerResource = 108
-        PointCamera = 109
-        PointCommentaryNode = 110
-        PoseController = 111
-        PostProcessController = 112
-        Precipitation = 113
-        PrecipitationBlocker = 114
-        PredictedViewModel = 115
-        Prop_Hallucination = 116
-        PropDoorRotating = 117
-        PropJeep = 118
-        PropVehicleDriveable = 119
-        RagdollManager = 120
-        RagdollProp = 121
-        RagdollPropAttached = 122
-        RopeKeyframe = 123
-        SCAR17 = 124
-        SceneEntity = 125
-        SensorGrenade = 126
-        SensorGrenadeProjectile = 127
-        ShadowControl = 128
-        SlideshowDisplay = 129
-        SmokeGrenade = 130
-        SmokeGrenadeProjectile = 131
-        SmokeStack = 132
-        SpatialEntity = 133
-        SpotlightEnd = 134
-        Sprite = 135
-        SpriteOriented = 136
-        SpriteTrail = 137
-        StatueProp = 138
-        SteamJet = 139
-        Sun = 140
-        SunlightShadowControl = 141
-        Team = 142
-        TeamplayRoundBasedRulesProxy = 143
-        TEArmorRicochet = 144
-        TEBaseBeam = 145
-        TEBeamEntPoint = 146
-        TEBeamEnts = 147
-        TEBeamFollow = 148
-        TEBeamLaser = 149
-        TEBeamPoints = 150
-        TEBeamRing = 151
-        TEBeamRingPoint = 152
-        TEBeamSpline = 153
-        TEBloodSprite = 154
-        TEBloodStream = 155
-        TEBreakModel = 156
-        TEBSPDecal = 157
-        TEBubbles = 158
-        TEBubbleTrail = 159
-        TEClientProjectile = 160
-        TEDecal = 161
-        TEDust = 162
-        TEDynamicLight = 163
-        TEEffectDispatch = 164
-        TEEnergySplash = 165
-        TEExplosion = 166
-        TEFireBullets = 167
-        TEFizz = 168
-        TEFootprintDecal = 169
-        TEFoundryHelpers = 170
-        TEGaussExplosion = 171
-        TEGlowSprite = 172
-        TEImpact = 173
-        TEKillPlayerAttachments = 174
-        TELargeFunnel = 175
-        TEMetalSparks = 176
-        TEMuzzleFlash = 177
-        TEParticleSystem = 178
-        TEPhysicsProp = 179
-        TEPlantBomb = 180
-        TEPlayerAnimEvent = 181
-        TEPlayerDecal = 182
-        TEProjectedDecal = 183
-        TERadioIcon = 184
-        TEShatterSurface = 185
-        TEShowLine = 186
-        Tesla = 187
-        TESmoke = 188
-        TESparks = 189
-        TESprite = 190
-        TESpriteSpray = 191
-        Test_ProxyToggle_Networkable = 192
-        TestTraceline = 193
-        TEWorldDecal = 194
-        TriggerPlayerMovement = 195
-        TriggerSoundOperator = 196
-        VGuiScreen = 197
-        VoteController = 198
-        WaterBullet = 199
-        WaterLODControl = 200
-        WeaponAug = 201
-        WeaponAWP = 202
-        WeaponBaseItem = 203
-        WeaponBizon = 204
-        WeaponCSBase = 205
-        WeaponCSBaseGun = 206
-        WeaponCycler = 207
-        WeaponElite = 208
-        WeaponFamas = 209
-        WeaponFiveSeven = 210
-        WeaponG3SG1 = 211
-        WeaponGalil = 212
-        WeaponGalilAR = 213
-        WeaponGlock = 214
-        WeaponHKP2000 = 215
-        WeaponM249 = 216
-        WeaponM3 = 217
-        WeaponM4A1 = 218
-        WeaponMAC10 = 219
-        WeaponMag7 = 220
-        WeaponMP5Navy = 221
-        WeaponMP7 = 222
-        WeaponMP9 = 223
-        WeaponNegev = 224
-        WeaponNOVA = 225
-        WeaponP228 = 226
-        WeaponP250 = 227
-        WeaponP90 = 228
-        WeaponSawedoff = 229
-        WeaponSCAR20 = 230
-        WeaponScout = 231
-        WeaponSG550 = 232
-        WeaponSG552 = 233
-        WeaponSG556 = 234
-        WeaponSSG08 = 235
-        WeaponTaser = 236
-        WeaponTec9 = 237
-        WeaponTMP = 238
-        WeaponUMP45 = 239
-        WeaponUSP = 240
-        WeaponXM1014 = 241
-        World = 242
-        DustTrail = 243
-        MovieExplosion = 244
-        ParticleSmokeGrenade = 245
-        RocketTrail = 246
-        SmokeTrail = 247
-        SporeExplosion = 248
-        SporeTrail = 249
+
+        ai_basenpc = 0
+        ak47
+        baseanimating
+        baseanimatingoverlay
+        baseattributableitem
+        basebutton
+        basecombatcharacter
+        basecombatweapon
+        basecsgrenade
+        basecsgrenadeprojectile
+        basedoor
+        baseentity
+        baseflex
+        basegrenade
+        baseparticleentity
+        baseplayer
+        basepropdoor
+        baseteamobjectiveresource
+        basetempentity
+        basetoggle
+        basetrigger
+        baseviewmodel
+        basevphysicstrigger
+        baseweaponworldmodel
+        beam
+        beamspotlight
+        bonefollower
+        brc4target
+        breachcharge
+        breachchargeprojectile
+        breakableprop
+        breakablesurface
+        bumpmine
+        bumpmineprojectile
+        c4
+        cascadelight
+        chicken
+        colorcorrection
+        colorcorrectionvolume
+        csgamerulesproxy
+        csplayer
+        csplayerresource
+        csragdoll
+        csteam
+        dangerzone
+        dangerzonecontroller
+        deagle
+        decoygrenade
+        decoyprojectile
+        drone
+        dronegun
+        dynamiclight
+        dynamicprop
+        econentity
+        econwearable
+        embers
+        entitydissolve
+        entityflame
+        entityfreezing
+        entityparticletrail
+        envambientlight
+        envdetailcontroller
+        envdofcontroller
+        envgascanister
+        envparticlescript
+        envprojectedtexture
+        envquadraticbeam
+        envscreeneffect
+        envscreenoverlay
+        envtonemapcontroller
+        envwind
+        feplayerdecal
+        firecrackerblast
+        firesmoke
+        firetrail
+        fish
+        fists
+        flashbang
+        fogcontroller
+        footstepcontrol
+        func_dust
+        func_lod
+        funcareaportalwindow
+        funcbrush
+        funcconveyor
+        funcladder
+        funcmonitor
+        funcmovelinear
+        funcoccluder
+        funcreflectiveglass
+        funcrotating
+        funcsmokevolume
+        functracktrain
+        gamerulesproxy
+        grassburn
+        handletest
+        hegrenade
+        hostage
+        hostagecarriableprop
+        incendiarygrenade
+        inferno
+        infoladderdismount
+        infomapregion
+        infooverlayaccessor
+        item_healthshot
+        itemcash
+        itemdogtags
+        knife
+        knifegg
+        lightglow
+        materialmodifycontrol
+        melee
+        molotovgrenade
+        molotovprojectile
+        moviedisplay
+        paradropchopper
+        particlefire
+        particleperformancemonitor
+        particlesystem
+        physbox
+        physboxmultiplayer
+        physicsprop
+        physicspropmultiplayer
+        physmagnet
+        physpropammobox
+        physproplootcrate
+        physpropradarjammer
+        physpropweaponupgrade
+        plantedc4
+        plasma
+        playerping
+        playerresource
+        pointcamera
+        pointcommentarynode
+        pointworldtext
+        posecontroller
+        postprocesscontroller
+        precipitation
+        precipitationblocker
+        predictedviewmodel
+        prop_hallucination
+        propcounter
+        propdoorrotating
+        propjeep
+        propvehicledriveable
+        ragdollmanager
+        ragdollprop
+        ragdollpropattached
+        ropekeyframe
+        scar17
+        sceneentity
+        sensorgrenade
+        sensorgrenadeprojectile
+        shadowcontrol
+        slideshowdisplay
+        smokegrenade
+        smokegrenadeprojectile
+        smokestack
+        snowball
+        snowballpile
+        snowballprojectile
+        spatialentity
+        spotlightend
+        sprite
+        spriteoriented
+        spritetrail
+        statueprop
+        steamjet
+        sun
+        sunlightshadowcontrol
+        survivalspawnchopper
+        tablet
+        team
+        teamplayroundbasedrulesproxy
+        tearmorricochet
+        tebasebeam
+        tebeamentpoint
+        tebeaments
+        tebeamfollow
+        tebeamlaser
+        tebeampoints
+        tebeamring
+        tebeamringpoint
+        tebeamspline
+        tebloodsprite
+        tebloodstream
+        tebreakmodel
+        tebspdecal
+        tebubbles
+        tebubbletrail
+        teclientprojectile
+        tedecal
+        tedust
+        tedynamiclight
+        teeffectdispatch
+        teenergysplash
+        teexplosion
+        tefirebullets
+        tefizz
+        tefootprintdecal
+        tefoundryhelpers
+        tegaussexplosion
+        teglowsprite
+        teimpact
+        tekillplayerattachments
+        telargefunnel
+        temetalsparks
+        temuzzleflash
+        teparticlesystem
+        tephysicsprop
+        teplantbomb
+        teplayeranimevent
+        teplayerdecal
+        teprojecteddecal
+        teradioicon
+        teshattersurface
+        teshowline
+        tesla
+        tesmoke
+        tesparks
+        tesprite
+        tespritespray
+        test_proxytoggle_networkable
+        testtraceline
+        teworlddecal
+        triggerplayermovement
+        triggersoundoperator
+        vguiscreen
+        votecontroller
+        waterbullet
+        waterlodcontrol
+        weaponaug
+        weaponawp
+        weaponbaseitem
+        weaponbizon
+        weaponcsbase
+        weaponcsbasegun
+        weaponcycler
+        weaponelite
+        weaponfamas
+        weaponfiveseven
+        weapong3sg1
+        weapongalil
+        weapongalilar
+        weaponglock
+        weaponhkp2000
+        weaponm249
+        weaponm3
+        weaponm4a1
+        weaponmac10
+        weaponmag7
+        weaponmp5navy
+        weaponmp7
+        weaponmp9
+        weaponnegev
+        weaponnova
+        weaponp228
+        weaponp250
+        weaponp90
+        weaponsawedoff
+        weaponscar20
+        weaponscout
+        weaponsg550
+        weaponsg552
+        weaponsg556
+        weaponshield
+        weaponssg08
+        weapontaser
+        weapontec9
+        weapontmp
+        weaponump45
+        weaponusp
+        weaponxm1014
+        world
+        worldvguitext
+        dusttrail
+        movieexplosion
+        particlesmokegrenade
+        rockettrail
+        smoketrail
+        sporeexplosion
+        sporetrail
+
     End Enum
 
     Public Enum WeaponSkin
