@@ -51,6 +51,8 @@ Public Class cBaseWeapon
                 Return WeaponType.SMG 'Mac10"
             Case 19
                 Return WeaponType.SMG 'P90"
+            Case 23
+                Return WeaponType.SMG 'MP5"
             Case 24
                 Return WeaponType.SMG 'UMP45"
             Case 25
