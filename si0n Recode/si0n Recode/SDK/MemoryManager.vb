@@ -54,7 +54,7 @@ Public Class cMemoryManager
                     If [Module].ModuleName = "engine.dll" Then
                         EngineDLL = [Module].BaseAddress
                     End If
-                    If [Module].ModuleName = "client_panorama.dll" Then
+                    If [Module].ModuleName = "client.dll" Then
                         ClientDLL = [Module].BaseAddress
                     End If
                     If EngineDLL > 0 And ClientDLL > 0 Then Return True
